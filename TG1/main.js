@@ -48,3 +48,7 @@ altroarr.forEach(
 
   altroarr.map(val => val + "!!!")
   console.log (altroarr)
+
+  let arrnum = [ 5, 3, 7, 8];
+  let tot = arrnum.reduce((acc, value) => acc + value, 0);
+console.log(tot);
