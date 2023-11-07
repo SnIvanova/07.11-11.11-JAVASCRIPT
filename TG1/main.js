@@ -32,3 +32,19 @@ let obj2 = Object.assign ({}, obj1)
  let metodarr = [4,3,5,6,7,8,9,10,11,12];
  metodarr = [...metodarr, obj3.age];
   console.log(metodarr);
+
+
+  callfunc("çiao")
+  altroarr.array.forEach(callfunc)
+
+altroarr.forEach(
+   function (val){
+   console.log(val)}
+)
+
+  altroarr.array.forEach(val => {console.log
+   
+  });
+
+  altroarr.map(val => val + "!!!")
+  console.log (altroarr)
