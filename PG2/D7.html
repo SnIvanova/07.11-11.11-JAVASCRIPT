@@ -129,46 +129,137 @@
        Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
     */
 
-      const addToTheSecond = function () {
-        
-      }
+    const addToTheSecond = function () {
+      const sList = document.querySelector("#secondList");
+      const newListItem = document.createElement("li");
+      newListItem.textContent = "New Item";
+      sList.appendChild(newListItem);
+    }
+
+    addToTheSecond();
+
 
       /* ESERCIZIO 6
        Scrivi una funzione che aggiunga un paragrafo al primo div
     */
 
-      const addParagraph = function () {}
+    const addParagraph = function (paragraphText) {
+    const firstDiv = document.querySelector("div:first-of-type");
+    const newParagraph = document.createElement("p");
+    newParagraph.textContent = paragraphText;
+    firstDiv.appendChild(newParagraph);
+    }
+
+    addParagraph("This is a new paragraph.");
+
 
       /* ESERCIZIO 7
        Scrivi una funzione che faccia scomparire la prima lista non ordinata
     */
 
-      const hideFirstUl = function () {}
+    /*  const hideFirstUl = function () {
+        const plista = document.querySelector("ul:first-of-type")
+        plista.remove()
+
+      }
+      hideFirstUl(); */
+      const hideFirstUl = function () {
+      const firstUl = document.querySelector("ul:first-of-type");
+      firstUl.style.display = 'none';
+      }
+
+        hideFirstUl();
+
 
       /* ESERCIZIO 8 
        Scrivi una funzione che renda verde il background di ogni lista non ordinata
       */
 
-      const paintItGreen = function () {}
+      const paintItGreen = function () {
+        const greenback = document.querySelectorAll('ul');
+        greenback.forEach((ul)=>{
+         ul.style.backgroundColor = 'green';})
+       
+      }
+      paintItGreen();
 
       /* ESERCIZIO 9
        Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
       */
 
-      const makeItClickable = function () {}
+      const makeItClickable = function () {
+      const removeButton = document.createElement("button");
+      removeButton.innerHTML = 'remove';
+      removeButton.classList.add("complete-btn");
+
+      const h1 = document.querySelector("h1");
+
+      removeButton.addEventListener('click', function() {
+        const text = h1.textContent;
+        h1.textContent = text.slice(0, -1);
+      });
+
+      document.body.appendChild(removeButton);
+      }
+
+      makeItClickable();
+
+
 
       /* ESERCIZIO 10
        Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
       */
 
-      const revealFooterLink = function () {}
+      const revealFooterLink = function () {
+        const footerLink = document.querySelector("footer a");
+        footerLink.addEventListener("click", function(event) {
+          event.preventDefault();
+          alert(footerLink.href);
+        });
+      }
+
+      revealFooterLink();
 
       /* ESERCIZIO 11
        Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
        La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
     */
 
-      const generateTable = function () {}
+    const generateTable = function () {
+    const products = [
+        { immagine: "immagine1.jpg", nomeprodotto: "Product 1", quantità: 3, prezzo: 10.99 },
+        { immagine: "immagine2.jpg", nomeprodotto: "Product 2", quantità: 2, prezzo: 19.99 },
+    ];
+    const tableArea = document.getElementById("tableArea");
+    const table = document.createElement("table");
+    const headers = ["immagine", "nomeprodotto", "quantità", "prezzo"];
+    const thead = table.createTHead();
+    const tbody = table.createTBody();
+
+
+    const createTableHeaders = () => {
+        const row = thead.insertRow();
+        headers.forEach(header => {
+            let th = document.createElement('th');
+            let text = document.createTextNode(header);
+            th.appendChild(text);
+            row.appendChild(th);
+        });
+    }
+
+    const createTableRows = () => {
+        products.forEach(product => {
+            const row = tbody.insertRow();
+            row.innerHTML = `<td><img src="${product.immagine}"></td><td>${product.nomeprodotto}</td><td>${product.quantità}</td><td>$${product.prezzo.toFixed(2)}</td>`;
+        });
+    }
+
+    createTableHeaders();
+    createTableRows();
+    tableArea.appendChild(table);
+};
+
+generateTable();
 
       /* ESERCIZIO 12
        Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
