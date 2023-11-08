@@ -2,6 +2,7 @@
   Scrivi una funzione per concatenare due stringhe ricevute come parametri, selezionando solamente i primi 2 caratteri della
   prima e gli ultimi 3 della seconda. Converti la stringa risultante in maiuscolo e mostrala con un console.log().
 */
+//const concut = function(str1, str2) { return ((str1.slice(0, 2).concat(str2.slice( -3))).touppercase)
 
 const Concatstr = (str1, str2) => {
   let smtnew = str1.slice(0, 2) + str2.slice(-3);
