@@ -48,7 +48,7 @@
      */
  
      const addToTheSecond = function () {
-       const sList = document.querySelector("#secondList");
+       const sList = document.querySelector("#secondList");//#ul#secondlist
        const newListItem = document.createElement("li");
        newListItem.textContent = "New Item";
        sList.appendChild(newListItem);
@@ -62,7 +62,7 @@
      */
  
      const addParagraph = function (paragraphText) {
-     const firstDiv = document.querySelector("div:first-of-type");
+     const firstDiv = document.querySelector("div:first-of-type"); 
      const newParagraph = document.createElement("p");
      newParagraph.textContent = paragraphText;
      firstDiv.appendChild(newParagraph);
@@ -227,4 +227,14 @@
        Crea una funzione che elimini le vocali da ogni elemento testuale della pagina (puoi aiutarti con i nuovi metodi degli array di ES6)
      */
  
-       const deleteVowels = function () {}
+       const deleteVowels = function () { {
+            const allElements = document.querySelectorAll('body *');
+            allElements.forEach(element => {
+                if (element.children.length === 0) { 
+                    element.innerText = element.innerText.replace(/[aeiou]/gi, '');
+                }
+            });
+        };
+        deleteVowels();
+        
+       }
