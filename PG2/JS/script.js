@@ -194,20 +194,34 @@
        /* ESERCIZIO 14
        Crea una funzione che nasconda le immagini della tabella quando eseguita
      */
-       const hideAllImages =  function hideImages() {
+       const hideAllImages =  function () {
         var images = document.querySelectorAll("#tableArea table img");
         for (var i = 0; i < images.length; i++) {
             images[i].style.display = "none";
         }
         }
     
-    hideImages()
+        hideAllImages()
  
        /* EXTRA ESERCIZIO 15
        Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
      */
  
-       const changeColorWithRandom = function () {}
+       const changeColorWithRandom = function () {
+        document.getElementById("changeMyColor").addEventListener("click", function() {
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+            this.style.color = getRandomColor();
+        });
+        
+       }
+       changeColorWithRandom()
  
        /* EXTRA ESERCIZIO 16
        Crea una funzione che elimini le vocali da ogni elemento testuale della pagina (puoi aiutarti con i nuovi metodi degli array di ES6)
