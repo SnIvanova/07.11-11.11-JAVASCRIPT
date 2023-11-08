@@ -194,8 +194,14 @@
        /* ESERCIZIO 14
        Crea una funzione che nasconda le immagini della tabella quando eseguita
      */
- 
-       const hideAllImages = function () {}
+       const hideAllImages =  function hideImages() {
+        var images = document.querySelectorAll("#tableArea table img");
+        for (var i = 0; i < images.length; i++) {
+            images[i].style.display = "none";
+        }
+        }
+    
+    hideImages()
  
        /* EXTRA ESERCIZIO 15
        Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
