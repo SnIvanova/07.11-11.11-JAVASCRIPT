@@ -200,7 +200,7 @@
             images[i].style.display = "none";
         }
         }
-    
+        //images.forEach(img => {img.style.display = "none";});
         hideAllImages()
  
        /* EXTRA ESERCIZIO 15
@@ -227,14 +227,14 @@
        Crea una funzione che elimini le vocali da ogni elemento testuale della pagina (puoi aiutarti con i nuovi metodi degli array di ES6)
      */
  
-       const deleteVowels = function () { {
-            const allElements = document.querySelectorAll('body *');
-            allElements.forEach(element => {
-                if (element.children.length === 0) { 
-                    element.innerText = element.innerText.replace(/[aeiou]/gi, '');
-                }
-            });
-        };
-        deleteVowels();
-        
-       }
+       const deleteVowels = function() {
+        const allElements = document.querySelectorAll('body *');
+        allElements.forEach(element => {
+            if (element.children.length === 0) {
+                element.innerText = element.innerText.replace(/[aeiouy]/gi, '');
+            }
+        });
+    };
+    
+    deleteVowels();
+    
