@@ -9,22 +9,18 @@ document.addEventListener("DOMContentLoaded", function () {
       if (taskText !== "") {
         const li = createTaskElement(taskText);
         taskList.appendChild(li);
-        taskInput.value = "";
+        clearInput(taskInput);
       }
     });
 
-    function createTaskElement(taskText) {
+    const createTaskElement = (taskText) =>{
       const li = document.createElement("li");
       const p = document.createElement("p");
       p.textContent = taskText;
 
-      const cancelButton = document.createElement("button");
-      cancelButton.textContent = 'Cancel';
-      cancelButton.addEventListener('click', function() {
-        p.style.textDecoration = "line-through";
-      });
-
-      li.addEventListener("click", function () {
+      const cancelButton = createCancelButton(p);
+      
+      li.addEventListener("click", () => {
         p.classList.toggle("line-through");
         li.classList.toggle("checked");
       });
@@ -34,6 +30,19 @@ document.addEventListener("DOMContentLoaded", function () {
       li.appendChild(cancelButton);
 
       return li;
+    }
+
+    const createCancelButton = (p) => {
+        const cancelButton = document.createElement("button");
+        cancelButton.textContent = 'Cancel';
+        cancelButton.addEventListener('click',() => {
+            p.style.textDecoration = "line-through";
+      });
+      return cancelButton;
+    }
+
+    const clearInput = (input) => {
+        input.value = "";
     }
 });
 
