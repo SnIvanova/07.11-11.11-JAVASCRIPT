@@ -16,8 +16,9 @@ console.log(btn2);
 
 let btn1 = document.querySelector("form button");
 
-btn1.addEventListener("click", function() {
+btn1.addEventListener("click", function(e) {
     let email = document.querySelector("input[type=email]");
+    e.preventDefault();
     if (email.value.trim ().length > 2) {
         console.log(email.value + " is already ok");
     } else { console.log(email.value + " not ok"); }

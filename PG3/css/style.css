@@ -1,0 +1,17 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  #task-list {
+    list-style-type: none;
+    
+  }
+  
+  .line-through {
+    text-decoration: line-through;
+  }
+  
+  .checked {
+    background-color: #f6f6f6;
+  }
+  
