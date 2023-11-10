@@ -44,5 +44,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const clearInput = (input) => {
         input.value = "";
     }
+
+    const sendEmailButton = document.querySelector("#send-email-button");
+    sendEmailButton.addEventListener("click", function () {
+        const email = window.prompt("Enter your email address:");
+        if (email) {
+            const subject = "To-Do List";
+            const body = taskList.innerHTML;
+            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.open(mailtoLink);
+        } else {
+            alert("Invalid email address. Please try again.");
+        }
+    });
 });
+
+
 
