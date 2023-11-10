@@ -30,7 +30,7 @@ flex-direction: row;
 flex-wrap: wrap;
 align-content: center;
 justify-content: center;
-        }
+}
 
 .cell {
 width: 40px;
@@ -76,17 +76,36 @@ background-color: #823075;
 }
 
 #drawnNumbers {
-margin-top: 20px;
-color: #a9409f;
-font-size: 18px;
+margin: 0.5em;
+padding: 1em;
+background-color: #a9409f;
+color: #fff;
+border: none;
+cursor: pointer;
+font-size: 16px;
+transition: background-color 0.3s ease;
+border-radius: 5px;
 }
- #playerBoardsContainer {
+
+#playerBoardsContainer {
+padding: 1em;
 display: flex;
 flex-wrap: wrap;
 gap: 20px;
 justify-content: center;
+border-radius: 10px;
+overflow: hidden;
+flex-direction: row;
+flex-wrap: wrap;
+align-content: center;
+justify-content: center;
+gap: 5px;
+margin-bottom: 20px;
+width: 20rem;
 }
 
+
+border: 2px solid #a9409f;
 .playerBoard {
 margin-top: 20px;
 }

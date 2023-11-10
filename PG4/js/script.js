@@ -20,17 +20,26 @@ const mainBoard = document.getElementById('mainBoard');
   
       const fragment = document.createDocumentFragment();
   
-      for (let i = 1; i <= 76; i++) {
+      let playerBoard = [];
+      for (let i = 0; i < 24; i++) {
+          let randomNumber = Math.floor(Math.random() * 76) + 1;
+          while (playerBoard.includes(randomNumber)) {
+              randomNumber = Math.floor(Math.random() * 76) + 1;
+          }
+  
+          playerBoard.push(randomNumber);
+  
           const cell = document.createElement('div');
           cell.classList.add('cell');
-          cell.textContent = i;
-          cell.addEventListener('click', () => toggleCell(cell, i));
+          cell.textContent = randomNumber;
+          cell.addEventListener('click', () => toggleCell(cell, randomNumber));
           fragment.appendChild(cell);
       }
   
       board.appendChild(fragment);
       boardContainer.appendChild(board);
   }
+  
 
   function drawNumber() {
     let randomNumber = Math.floor(Math.random() * 76) + 1;
@@ -44,45 +53,102 @@ const mainBoard = document.getElementById('mainBoard');
     highlightCell(randomNumber);
 }
 
-    function displayDrawnNumber(number) {
-        const drawnNumberDiv = document.createElement('div');
-        drawnNumberDiv.textContent = `Drawn Number: ${number}`;
-        drawnNumbersContainer.appendChild(drawnNumberDiv);
-    }
+  function displayDrawnNumber(number) {
+    const drawnNumberDiv = document.createElement('div');
+    drawnNumberDiv.textContent = `Drawn Number: ${number}`;
+    drawnNumbersContainer.innerHTML = '';
+    drawnNumbersContainer.appendChild(drawnNumberDiv);
+  }
 
-    function highlightCell(number) {
-        const cell = document.querySelector(`#mainBoard .cell:nth-child(${number})`);
-        cell.classList.add('selected');
-    }
-
-    function toggleCell(cell, number) {
-        if (!selectedNumbers.has(number)) {
-            selectedNumbers.add(number);
+  function highlightCell(number) {
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach(cell => {
+        if (cell.textContent == number) {
             cell.classList.add('selected');
-        } else {
-            selectedNumbers.delete(number);
-            cell.classList.remove('selected');
         }
+    });
+}
+
+
+    function addNumber(cell, number) {
+      selectedNumbers.add(number);
+      cell.classList.add('selected');
+  }
+  
+  function removeNumber(cell, number) {
+      selectedNumbers.delete(number);
+      cell.classList.remove('selected');
+  }
+  
+  function toggleCell(cell, number) {
+      if (!selectedNumbers.has(number)) {
+          addNumber(cell, number);
+      } else {
+          removeNumber(cell, number);
+      }
+  }
+  
+
+  function generatePlayerBoards() {
+    const numPlayerBoards = parseInt(numPlayerBoardsInput.value, 10);
+
+    if (isNaN(numPlayerBoards)) {
+        console.error('Invalid number of player boards.');
+        return;
     }
 
-    function generatePlayerBoards() {
-        const numPlayerBoards = parseInt(numPlayerBoardsInput.value, 10);
-        playerBoardsContainer.innerHTML = '';
+    playerBoardsContainer.innerHTML = '';
 
-        for (let i = 1; i <= numPlayerBoards; i++) {
-            const playerBoard = document.createElement('div');
-            playerBoard.classList.add('board');
-            createBoard(playerBoard, `playerBoard${i}`);
-            playerBoardsContainer.appendChild(playerBoard);
+    for (let i = 1; i <= numPlayerBoards; i++) {
+        let playerBoard = [];
+
+        
+        for (let j = 0; j < 24; j++) {
+            let randomNumber = Math.floor(Math.random() * 76) + 1;
+
+            
+            while (playerBoard.includes(randomNumber)) {
+                randomNumber = Math.floor(Math.random() * 76) + 1;
+            }
+
+            playerBoard.push(randomNumber);
         }
-    }
 
-    function clearAll() {
-        selectedNumbers.clear();
-        drawnNumbersContainer.innerHTML = '';
-        clearBoard(mainBoard);
-        clearBoard(playerBoardsContainer);
+        const boardDiv = document.createElement('div');
+        boardDiv.classList.add('board');
+
+        playerBoard.forEach(number => {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.textContent = number;
+            cell.addEventListener('click', () => toggleCell(cell, number));
+            boardDiv.appendChild(cell);
+        });
+
+        playerBoardsContainer.appendChild(boardDiv);
     }
+}
+
+
+
+function clearAll() {
+  if (selectedNumbers) {
+      selectedNumbers.clear();
+  }
+
+  if (drawnNumbersContainer) {
+      drawnNumbersContainer.innerHTML = '';
+  }
+
+  if (mainBoard) {
+      clearBoard(mainBoard);
+  }
+
+  if (playerBoardsContainer) {
+      clearBoard(playerBoardsContainer);
+  }
+}
+
 
     function clearBoard(boardContainer) {
         const cells = boardContainer.querySelectorAll('.cell');
