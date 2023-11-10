@@ -1,26 +1,46 @@
 body {
     background-color: #131334;
-}
-h1, h2, h3 {
-    text-align: center;
-    color : #fff;
-    text-transform: uppercase;
+    color: #fff;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.color-epic { 
+
+h1 {
+    color: #a9409f;
+    text-align: center;
+}
+
+.color-epic {
     color: #a9409f;
 }
 
 .container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#calendar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     padding: 1rem;
-} 
-
-#calendar, .day {
-border: 1px solid #a9409f;
 }
-.day{
-    padding: 0.5 em;
-    width: 2.5 em;
-    display: inline-block;
 
+.day {
+    border: 1px solid #a9409f;
+    padding: 0.5em;
+    width: 2.5em;
+    text-align: center;
+    margin: 0.2em;
+    transition: background-color 0.3s ease;
 }
+
+#calendar h3 {
+    margin: 0;
+}
+
+.day:hover {
+    background-color: #a9409f;
+    color: #fff;
+    cursor: pointer;
+}
+

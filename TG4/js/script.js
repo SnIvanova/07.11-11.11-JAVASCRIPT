@@ -1,5 +1,7 @@
 let now = new Date();
 let calendar = document.querySelector('#calendar');
+let apointments = [];
+
 
 function creaCalendario() {
     let lastDayDate = new Date(now.getFullYear(), now.getMonth() + 1, 0);
@@ -20,6 +22,14 @@ function creaCalendario() {
         calendar.appendChild(dayCellNode);
     }
 }
+
+function creaarrayapontamento() {
+    for (let i = 0; i < lastDayOftheMonth, i++) {
+        apointments[i] = "O"
+    }
+    
+}
+
 
 function nomeMese(m) {
     switch (m) {
