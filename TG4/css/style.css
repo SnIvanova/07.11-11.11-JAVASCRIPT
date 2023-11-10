@@ -1,0 +1,26 @@
+body {
+    background-color: #131334;
+}
+h1, h2, h3 {
+    text-align: center;
+    color : #fff;
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.color-epic { 
+    color: #a9409f;
+}
+
+.container {
+    padding: 1rem;
+} 
+
+#calendar, .day {
+border: 1px solid #a9409f;
+}
+.day{
+    padding: 0.5 em;
+    width: 2.5 em;
+    display: inline-block;
+
+}
