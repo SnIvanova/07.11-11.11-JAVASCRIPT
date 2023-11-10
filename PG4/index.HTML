@@ -13,26 +13,28 @@
 <body>
 
 <h1>Tombola Game</h1>
-<div>
-    <label for="numPlayerBoards">Number of Player Boards:</label>
-    <input type="number" id="numPlayerBoards" min="1" max="10" value="1">
+    <div>
+        <label for="numPlayerBoards">Number of Player Boards:</label>
+        <input type="number" id="numPlayerBoards" min="1" max="10" value="1">
 
-</div>
-<div class="container">
-    <button id="generatePlayerBoards">Generate Boards</button>
+    </div>
+    <div class="container">
+        <button id="generatePlayerBoards">Generate Boards</button>
 
-    <button id="clearButton">Clear All</button> 
-</div>
-<div class="container">
-    <button id="drawButton">Draw Number</button>
-    <div id="drawnNumbers"></div>
-</div>
-<div class="container">
-    <div class="board" id="mainBoard">
-        <div id="playerBoardsContainer"></div>
-</div>
+        <button id="clearButton">Clear All</button> 
+    </div>
+    <div class="container">
+        <button id="drawButton">Draw Number</button>
+        <div id="drawnNumbers"></div>
+    </div>
+    <div class="container">
+        <div class="board" id="mainBoard">
+            <div id="playerBoardsContainer"></div>
+    </div>
     
-</div>
+    <div id="additionalBoardContainer" class="board-container">
+        
+    </div>
 
 
 <script src="js/script.js"></script>

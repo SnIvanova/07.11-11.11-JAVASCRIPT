@@ -1,44 +1,48 @@
 const mainBoard = document.getElementById('mainBoard');
     const playerBoardsContainer = document.getElementById('playerBoardsContainer');
+    const additionalBoardContainer = document.getElementById('additionalBoardContainer');
     const drawButton = document.getElementById('drawButton');
     const clearButton = document.getElementById('clearButton');
     const generatePlayerBoardsButton = document.getElementById('generatePlayerBoards');
     const numPlayerBoardsInput = document.getElementById('numPlayerBoards');
     const drawnNumbersContainer = document.getElementById('drawnNumbers');
     const selectedNumbers = new Set();
-
-    createBoard(mainBoard, 'mainBoard');
+    
+  
+    createBoard(mainBoard, 'mainBoard',24);
+    createBoard(additionalBoardContainer, 'additionalBoard',76);
 
     drawButton.addEventListener('click', drawNumber);
     clearButton.addEventListener('click', clearAll);
     generatePlayerBoardsButton.addEventListener('click', generatePlayerBoards);
-
-    function createBoard(boardContainer, id) {
+    
+    
+    function createBoard(boardContainer, id, numberOfCells) {
       const board = document.createElement('div');
       board.id = id;
       board.classList.add('board');
-  
+    
       const fragment = document.createDocumentFragment();
-  
-      let playerBoard = [];
-      for (let i = 0; i < 24; i++) {
-          let randomNumber = Math.floor(Math.random() * 76) + 1;
-          while (playerBoard.includes(randomNumber)) {
-              randomNumber = Math.floor(Math.random() * 76) + 1;
-          }
-  
-          playerBoard.push(randomNumber);
-  
-          const cell = document.createElement('div');
-          cell.classList.add('cell');
-          cell.textContent = randomNumber;
-          cell.addEventListener('click', () => toggleCell(cell, randomNumber));
-          fragment.appendChild(cell);
+    
+      let boardNumbers = [];
+      for (let i = 0; i < numberOfCells; i++) {
+        let randomNumber = Math.floor(Math.random() * 76) + 1;
+        while (boardNumbers.includes(randomNumber)) {
+          randomNumber = Math.floor(Math.random() * 76) + 1;
+        }
+    
+        boardNumbers.push(randomNumber);
+    
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.textContent = randomNumber;
+        cell.addEventListener('click', () => toggleCell(cell, randomNumber));
+        fragment.appendChild(cell);
       }
-  
+    
       board.appendChild(fragment);
       boardContainer.appendChild(board);
-  }
+    }
   
 
   function drawNumber() {
@@ -106,8 +110,7 @@ const mainBoard = document.getElementById('mainBoard');
         for (let j = 0; j < 24; j++) {
             let randomNumber = Math.floor(Math.random() * 76) + 1;
 
-            
-            while (playerBoard.includes(randomNumber)) {
+             while (playerBoard.includes(randomNumber)) {
                 randomNumber = Math.floor(Math.random() * 76) + 1;
             }
 
