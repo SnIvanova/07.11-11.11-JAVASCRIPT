@@ -44,33 +44,26 @@ const mainBoard = document.getElementById('mainBoard');
     highlightCell(randomNumber);
 }
 
-function displayDrawnNumber(number) {
-  const drawnNumberDiv = document.getElementById('drawnNumber');
-  if (!drawnNumberDiv) {
-      drawnNumberDiv = document.createElement('div');
-      drawnNumberDiv.id = 'drawnNumber';
-      drawnNumbersContainer.appendChild(drawnNumberDiv);
-  }
-  drawnNumberDiv.textContent = `Drawn Number: ${number}`;
-}
+    function displayDrawnNumber(number) {
+        const drawnNumberDiv = document.createElement('div');
+        drawnNumberDiv.textContent = `Drawn Number: ${number}`;
+        drawnNumbersContainer.appendChild(drawnNumberDiv);
+    }
 
-function highlightCell(number) {
-  const cell = document.querySelector(`#mainBoard .cell:nth-child(${number})`);
-  if (cell) {
-      cell.classList.add('selected');
-  }
-}
+    function highlightCell(number) {
+        const cell = document.querySelector(`#mainBoard .cell:nth-child(${number})`);
+        cell.classList.add('selected');
+    }
 
-function toggleCell(cell, number) {
-  const isSelected = selectedNumbers.has(number);
-  cell.classList.toggle('selected', !isSelected);
-  if (isSelected) {
-      selectedNumbers.delete(number);
-  } else {
-      selectedNumbers.add(number);
-  }
-}
-
+    function toggleCell(cell, number) {
+        if (!selectedNumbers.has(number)) {
+            selectedNumbers.add(number);
+            cell.classList.add('selected');
+        } else {
+            selectedNumbers.delete(number);
+            cell.classList.remove('selected');
+        }
+    }
 
     function generatePlayerBoards() {
         const numPlayerBoards = parseInt(numPlayerBoardsInput.value, 10);
